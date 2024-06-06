@@ -17,11 +17,12 @@ class Pax8():
 
 class Email():
     #initializes variables
-    def __init__(self,User,requester,distro_email=None,Pax8_license=None):
+    def __init__(self,User,requester,distro_email=None,Pax8_license=None,sharedmailbox=None):
         self.User = User
         self.requester = requester
         self.distro_email = distro_email
         self.Pax8_license = Pax8_license
+        self.sharedmailbox = sharedmailbox
     #Create email account notes
     def create(self):
         print(requester,"requested for",User,"to be created")
@@ -59,6 +60,9 @@ class Email():
         print("Connected to Pax 8")
         print("Added",Pax8_license,"to",User +"'s account")
         print("")
+    #Shared Mailbox
+    def create_sharedmailbox(self):
+        print(requester,"requested for",sharedmailbox,)
 
 class AD():
     #Initializes variables 
@@ -107,17 +111,6 @@ while True:
 8. Pax 8 License
 9. Pax 8 tenant creation
 Option: """)
-
-    if options == "7":
-        print("")
-        distro_email = input("What is the distribution list email?: ")
-        print("")
-
-    if options == "8":
-        print("")
-        Pax8_license = input("What license did you purchase?: ")
-        print("")
-
     #connects option with text
     if options == "1":
         print("")
@@ -145,9 +138,13 @@ Option: """)
         a.reset()
     elif options == "7":
         print("")
+        distro_email = input("What is the distribution list email?: ")
+        print("")
         e=Email(User,requester,distro_email)
         e.distro()
     elif options =="8":
+        print("")
+        Pax8_license = input("What license did you purchase?: ")
         print("")
         e=Email(User,requester,Pax8_license)
         e.pax8()
@@ -155,6 +152,11 @@ Option: """)
         print("")
         p=Pax8(requester,customer)
         p.Pax8_GDAP()
+    elif options == "10":
+        print("")
+        sharedmailbox = input("What is the shared mailbox email?: ")
+        print("")
+        e=Email(requester,sharedmailbox)
     else:
         print("")
         print("Option not available")
