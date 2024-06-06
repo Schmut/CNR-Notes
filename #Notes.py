@@ -2,7 +2,6 @@ import requests
 
 #Notes
 #Note Maker program for premade notes 
-
 class Pax8():
     def __init__(self,requester,customer):
         self.requester = requester
@@ -62,7 +61,11 @@ class Email():
         print("")
     #Shared Mailbox
     def create_sharedmailbox(self):
-        print(requester,"requested for",sharedmailbox,)
+        print(requester,"requested for",sharedmailbox,"to be created")
+        print("Connected to Office 365 admin center")
+        print("Created",sharedmailbox)
+        print("Sent an email to",requester)
+        print("")
 
 class AD():
     #Initializes variables 
@@ -110,6 +113,7 @@ while True:
 7. Add User to distribution list
 8. Pax 8 License
 9. Pax 8 tenant creation
+10. Create shared mailbox
 Option: """)
     #connects option with text
     if options == "1":
@@ -157,6 +161,7 @@ Option: """)
         sharedmailbox = input("What is the shared mailbox email?: ")
         print("")
         e=Email(requester,sharedmailbox)
+        e.create_sharedmailbox()
     else:
         print("")
         print("Option not available")
