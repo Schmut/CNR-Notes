@@ -96,11 +96,72 @@ class AD():
         print("Sent password to",requester)
         print("")
 
+class SonicWALL():
+    def __init__(self,requester):
+        self.requester = requester
+
+    def sonicwall_setup_migration(self):
+        print("""Unboxed SonicWALL
+Plugged in SonicWALL
+Connected to old SonicWALL 
+Exported configuration 
+Imported configuration into SonicWALL migration tool 
+Signed into the SonicWALL 
+Imported SonicWALL configuration 
+Verified that the new SonicWALL accepted the configuration 
+Changed the port to 3097 
+Changed inactivity to 15 minutes 
+Changed admin password 
+Recorded admin password 
+Created CNR account 
+Recorded CNR password 
+Verified that LAN information was correct
+Verified that WAN information was correct 
+Verified that CNR-WAN information was correct 
+Configured all unused ports to port shielded 
+Verified that the DHCP server was correct 
+Registered SonicWALL to mysonicwall.com
+Configured GEO IP Filter 
+Enabled Antivirus 
+Enabled IPS
+Enabled Anti-Spyware
+Updated firmware of the firewall 
+Exported configuration 
+Created label for sonicWALL 
+Recorded SonicWALL information in database manager
+""")
+        print("")
+
+    def sonicwall_setup_scratch(self):
+        print("""Unboxed SonicWALL
+Plugged in SonicWALL
+Signed into the SonicWALL 
+Changed the port to 3097 
+Changed inactivity to 15 minutes 
+Changed admin password 
+Recorded admin password 
+Created CNR account 
+Recorded CNR password 
+Adjusted LAN configuration
+Adjusted WAN configuration
+Created CNR-WAN address object
+Configured all unused ports to port shielded 
+Configured DHCP server 
+Registered SonicWALL to mysonicwall.com
+Configured GEO IP Filter 
+Enabled Antivirus 
+Enabled IPS
+Enabled Anti-Spyware
+Updated firmware of the firewall 
+Exported configuration 
+Created label for sonicWALL
+Recorded SonicWALL information in database manager 
+""")
+    print("")
+
 #runs program
 while True:
     print ("Note Maker")
-    User = input("Who is the user: ")
-    requester = input("Who sent in the request: ")
     customer = "Customer"
     print("")
     options = input("""Choose an option
@@ -114,33 +175,55 @@ while True:
 8. Pax 8 License
 9. Pax 8 tenant creation
 10. Create shared mailbox
+11. SonicWALL Migration
+12. SonicWALL Scratch setup 
 Option: """)
     #connects option with text
     if options == "1":
         print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
         e=Email(User,requester)
         e.create()
     elif options == "2":
+        print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
         print("")
         a=AD(User,requester)
         a.create()
     elif options == "3":
         print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
+        print("")
         e=Email(User,requester)
         e.delete()
     elif options == "4":
+        print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
         print("")
         a=AD(User,requester)
         a.delete()
     elif options == "5":
         print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
+        print("")
         e=Email(User,requester)
         e.reset()
     elif options == "6":
         print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
+        print("")
         a=AD(User,requester)
         a.reset()
     elif options == "7":
+        print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
         print("")
         distro_email = input("What is the distribution list email?: ")
         print("")
@@ -148,20 +231,37 @@ Option: """)
         e.distro()
     elif options =="8":
         print("")
+        User = input("Who is the user: ")
+        requester = input("Who sent in the request: ")
+        print("")
         Pax8_license = input("What license did you purchase?: ")
         print("")
         e=Email(User,requester,Pax8_license)
         e.pax8()
     elif options =="9":
         print("")
+        requester = input("Who sent in the request: ")
+        print("")
         p=Pax8(requester,customer)
         p.Pax8_GDAP()
     elif options == "10":
+        print("")
+        requester = input("Who sent in the request: ")
         print("")
         sharedmailbox = input("What is the shared mailbox email?: ")
         print("")
         e=Email(requester,sharedmailbox)
         e.create_sharedmailbox()
+    elif options == "11":
+        print("")
+        requester = "requester"
+        s=SonicWALL(requester)
+        s.sonicwall_setup_migration()
+    elif options == "12":
+        print("")
+        requester = "requester"
+        s=SonicWALL(requester)
+        s.sonicwall_setup_scratch()
     else:
         print("")
         print("Option not available")
